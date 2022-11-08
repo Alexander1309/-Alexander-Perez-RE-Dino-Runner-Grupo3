@@ -1,5 +1,6 @@
-import pygame
 import os
+
+import pygame
 
 # Global Constants
 TITLE = "Chrome Dino Runner"
