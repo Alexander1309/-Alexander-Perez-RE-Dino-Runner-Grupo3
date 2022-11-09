@@ -6,8 +6,8 @@ class Dinosaur:
   Y_POS = 310
 
   def __init__(self):
-    self.iamge = RUNNING[0]
-    self.dino_rect = self.iamge.get_rect()
+    self.image = RUNNING[0]
+    self.dino_rect = self.image.get_rect()
 
     self.dino_rect.x = self.X_POS
     self.dino_rect.y = self.Y_POS
@@ -21,7 +21,7 @@ class Dinosaur:
       self.step_index = 0
 
   def draw(self, screen):
-    screen.blit(self.iamge, (self.dino_rect.x, self.dino_rect.y))
+    screen.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
 
   def event(self):
     pass
