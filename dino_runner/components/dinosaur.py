@@ -21,7 +21,6 @@ class Dinosaur:
       self.step_index = 0
 
   def draw(self, screen):
-    self.update()
     screen.blit(self.iamge, (self.dino_rect.x, self.dino_rect.y))
 
   def event(self):
