@@ -21,9 +21,8 @@ class ObstacleManager:
     for obstacle in self.obstacles:
       obstacle.update(self.obstacles)
       if game.player.dino_rect.colliderect(obstacle.rect):
-        # pygame.time.delay(500)
-        # game.playing = False
-        pass
+        pygame.time.delay(500)
+        game.playing = False
 
     for obstacle in self.obstacles:
       obstacle.update(self.obstacles)
