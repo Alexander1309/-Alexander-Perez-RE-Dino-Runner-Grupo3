@@ -64,6 +64,9 @@ class Game:
     self.player.update(user_input)
     self.obstacle_manager.update(self)
     self.cloud_manager.update()
+    
+    if self.points % 250 == 0:
+      self.player_heart_manager.add_heart()
 
   def draw(self):
     self.score()
