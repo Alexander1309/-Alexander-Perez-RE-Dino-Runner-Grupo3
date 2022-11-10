@@ -1,7 +1,4 @@
-import random
-
 from dino_runner.components.opstacles.opstacle import Obstacle
-from dino_runner.utils.constants import BIRD
 
 
 class Bird(Obstacle):
