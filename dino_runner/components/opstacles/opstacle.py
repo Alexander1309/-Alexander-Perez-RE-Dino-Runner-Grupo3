@@ -1,5 +1,3 @@
-import random
-
 from pygame.sprite import Sprite
 
 from dino_runner.utils.constants import SCREEN_WIDTH
@@ -19,6 +17,7 @@ class Obstacle(Sprite):
 
     if self.step_index >= 10:
       self.step_index = 0
+      
     if type in [2, 3, 4]: 
       rest_y = [325, 335, 390]
       self.rect.y = rest_y[(type - 2)] - self.rect.height

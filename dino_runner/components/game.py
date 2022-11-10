@@ -1,12 +1,14 @@
 import pygame
 
+from dino_runner.components.clouds.cloud_manager import CloudManager
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.opstacles.obstacle_manager import ObstacleManager
 from dino_runner.components.player_hearts.player_heart_manager import \
     PlayerHeartManager
 from dino_runner.components.text_utils import *
-from dino_runner.utils.constants import (BG, FPS, GAME_SPEED, ICON, RUNNING,
-                                         SCREEN_HEIGHT, SCREEN_WIDTH, TITLE)
+from dino_runner.utils.constants import (BG, FPS, GAME_OVER, GAME_SPEED, ICON,
+                                         RUNNING, SCREEN_HEIGHT, SCREEN_WIDTH,
+                                         TITLE)
 
 
 class Game:
@@ -23,6 +25,7 @@ class Game:
     self.player = Dinosaur()
     self.obstacle_manager = ObstacleManager()
     self.player_heart_manager = PlayerHeartManager()
+    self.cloud_manager = CloudManager()
 
     self.poitn_ant = 0
     self.points = 0
@@ -37,6 +40,7 @@ class Game:
   def run(self):
     self.obstacle_manager.reset_obstacles(self)
     self.player_heart_manager.reset_hearts()
+    self.cloud_manager.reset_clouds()
     self.playing = True
     while self.playing:
       self.events()
@@ -59,6 +63,7 @@ class Game:
     user_input = pygame.key.get_pressed()
     self.player.update(user_input)
     self.obstacle_manager.update(self)
+    self.cloud_manager.update()
 
   def draw(self):
     self.score()
@@ -67,6 +72,7 @@ class Game:
     self.player.draw(self.screen)
     self.obstacle_manager.draw(self.screen)
     self.player_heart_manager.draw(self.screen)
+    self.cloud_manager.draw(self.screen)
 
     pygame.display.update()
     pygame.display.flip()
@@ -113,6 +119,7 @@ class Game:
       self.screen.blit(text, text_rect)
       self.screen.blit(score, score_rect)
       self.screen.blit(death, death_rect)
+      self.screen.blit(GAME_OVER, (half_screen_width-185, half_screen_height-230))
 
     self.screen.blit(RUNNING[0], (half_screen_width-20, half_screen_height-140))
 
