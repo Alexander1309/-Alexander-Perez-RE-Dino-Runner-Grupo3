@@ -53,7 +53,7 @@ class Game:
       if event.type == pygame.QUIT:
         self.playing = False
         self.running = False
-    self.screen.fill((255, 255, 255))
+    self.screen.fill((0, 0, 0))
 
   def update(self):
     user_input = pygame.key.get_pressed()
@@ -118,8 +118,7 @@ class Game:
 
   def show_menu(self):
     self.running = True
-    white_color = (155, 255, 255)
-    self.screen.fill(white_color)
+    self.screen.fill((0, 0, 0))
     self.print_menu_elements()
     pygame.display.update()
     self.handle_key_event_menu()
