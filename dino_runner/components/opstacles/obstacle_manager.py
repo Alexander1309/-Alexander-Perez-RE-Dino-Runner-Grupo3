@@ -34,6 +34,7 @@ class ObstacleManager:
       if game.player.dino_rect.colliderect(obstacle.rect):
         if not game.player.shield:
           game.player.sounds[1].play()
+          self.obstacles = []
           game.player_heart_manager.reduce_heart()
           if game.player_heart_manager.heart_count > 0:
             game.player.shield = True
