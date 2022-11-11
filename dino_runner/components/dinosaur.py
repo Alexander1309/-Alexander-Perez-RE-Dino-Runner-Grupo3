@@ -6,8 +6,9 @@ from dino_runner.utils.constants import (DEFAULT_TYPE, DUCKING, DUCKING_HAMMER,
                                          DUCKING_SHIELD, HAMMER_TYPE, JUMPING,
                                          JUMPING_HAMMER, JUMPING_SHIELD,
                                          PATH_DEATH_SOUND, PATH_JUMP_SOUND,
-                                         RUNNING, RUNNING_HAMMER,
-                                         RUNNING_SHIELD, SHIELD_TYPE)
+                                         PATH_SHOOT_SOUND, RUNNING,
+                                         RUNNING_HAMMER, RUNNING_SHIELD,
+                                         SHIELD_TYPE)
 
 
 class Dinosaur(Sprite):
@@ -28,6 +29,7 @@ class Dinosaur(Sprite):
     self.sounds = [
       pygame.mixer.Sound(PATH_JUMP_SOUND),
       pygame.mixer.Sound(PATH_DEATH_SOUND),
+      pygame.mixer.Sound(PATH_SHOOT_SOUND),
     ]
 
     self.dino_rect.x = self.X_POS
@@ -75,6 +77,7 @@ class Dinosaur(Sprite):
       self.step_index = 0
 
     if self.hammer_enabled > 0 and user_input[pygame.K_SPACE]:
+      self.sounds[2].play()
       self.hammer = Hammer(self.dino_rect.x + 100, self.dino_rect.y + 50)
       self.hammer_enabled = max(self.hammer_enabled - 1, 0)
       if self.hammer_enabled == 0:
@@ -113,11 +116,11 @@ class Dinosaur(Sprite):
           found = pygame.font.Font("freesansbold.ttf", 18)
           text = found.render(f"Shield enable for {time_to_show}", True, (255, 255, 255))
           text_rect = text.get_rect()
-          text_rect.center = (500, 400)
+          text_rect.center = (500, 450)
           screen.blit(text, text_rect)
-        else:
-          self.shield = False
-          self.update_to_default(SHIELD_TYPE)
+      else:
+        self.shield = False
+        self.update_to_default(SHIELD_TYPE)
 
   def update_to_default(self, current_type):
     if self.type == current_type:

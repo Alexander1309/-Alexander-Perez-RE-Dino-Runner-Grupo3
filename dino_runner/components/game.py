@@ -8,9 +8,9 @@ from dino_runner.components.player_hearts.player_heart_manager import \
     PlayerHeartManager
 from dino_runner.components.power_ups.powerup_manager import PowerUpManager
 from dino_runner.components.text_utils import *
-from dino_runner.utils.constants import (BG, FPS, GAME_OVER, GAME_SPEED, ICON,
-                                         RUNNING, SCREEN_HEIGHT, SCREEN_WIDTH,
-                                         TITLE)
+from dino_runner.utils.constants import (BG, DEFAULT_TYPE, FPS, GAME_OVER,
+                                         GAME_SPEED, ICON, RUNNING,
+                                         SCREEN_HEIGHT, SCREEN_WIDTH, TITLE)
 
 
 class Game:
@@ -44,6 +44,12 @@ class Game:
       self.events()
       self.update()
       self.draw()
+
+  def reset(self):
+    self.poitn_ant = self.points
+    self.points = 0
+    self.game_speed = GAME_SPEED
+    self.player.type = DEFAULT_TYPE
     
   def create_components(self):
     self.obstacle_manager.reset_obstacles(self)
@@ -51,9 +57,6 @@ class Game:
     self.cloud_manager.reset_clouds()
     self.meteor_manager.reset_meteors()
     self.power_up_manager.reset_power_ups(self.points)
-    self.poitn_ant = self.points
-    self.points = 0
-    self.game_speed = GAME_SPEED
 
   def execute(self):
     while self.running:

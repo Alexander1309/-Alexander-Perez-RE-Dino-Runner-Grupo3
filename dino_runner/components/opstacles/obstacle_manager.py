@@ -43,13 +43,12 @@ class ObstacleManager:
             game.player.shield_time_up = start_time + 1000
           else:
             pygame.time.delay(500)
+            game.reset()
             game.playing = False
             game.death_count += 1
             break
         else:
           self.obstacles.remove(obstacle)
-          
-
 
   def draw(self, screen):
     for obstacle in self.obstacles:
