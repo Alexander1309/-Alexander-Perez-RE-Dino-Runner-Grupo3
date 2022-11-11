@@ -6,9 +6,9 @@ from dino_runner.utils.constants import (DEFAULT_TYPE, DUCKING, DUCKING_HAMMER,
                                          DUCKING_SHIELD, HAMMER_TYPE, JUMPING,
                                          JUMPING_HAMMER, JUMPING_SHIELD,
                                          PATH_DEATH_SOUND, PATH_JUMP_SOUND,
-                                         PATH_SHOOT_SOUND, RUNNING,
-                                         RUNNING_HAMMER, RUNNING_SHIELD,
-                                         SHIELD_TYPE)
+                                         PATH_SHEILD_SOUND, PATH_SHOOT_SOUND,
+                                         RUNNING, RUNNING_HAMMER,
+                                         RUNNING_SHIELD, SHIELD_TYPE)
 
 
 class Dinosaur(Sprite):
@@ -30,6 +30,7 @@ class Dinosaur(Sprite):
       pygame.mixer.Sound(PATH_JUMP_SOUND),
       pygame.mixer.Sound(PATH_DEATH_SOUND),
       pygame.mixer.Sound(PATH_SHOOT_SOUND),
+      pygame.mixer.Sound(PATH_SHEILD_SOUND),
     ]
 
     self.dino_rect.x = self.X_POS
@@ -113,12 +114,14 @@ class Dinosaur(Sprite):
       time_to_show = round((self.shield_time_up - pygame.time.get_ticks()) / 1000, 2)
       if time_to_show >= 0:
         if self.show_text:
+          self.sounds[3].play()
           found = pygame.font.Font("freesansbold.ttf", 18)
           text = found.render(f"Shield enable for {time_to_show}", True, (255, 255, 255))
           text_rect = text.get_rect()
           text_rect.center = (500, 450)
           screen.blit(text, text_rect)
       else:
+        self.sounds[3].stop()
         self.shield = False
         self.update_to_default(SHIELD_TYPE)
 

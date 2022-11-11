@@ -89,6 +89,7 @@ HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 PATH_JUMP_SOUND = os.path.join(IMG_DIR, "Sounds/jump_sound.wav")
 PATH_DEATH_SOUND = os.path.join(IMG_DIR, "Sounds/death_sound.wav")
 PATH_SHOOT_SOUND = os.path.join(IMG_DIR, "Sounds/shoot_sound.wav")
+PATH_SHEILD_SOUND = os.path.join(IMG_DIR, "Sounds/shield_sound.wav")
 
 GAME_SPEED = 20
 DEFAULT_TYPE = "default"
