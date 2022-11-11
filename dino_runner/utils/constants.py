@@ -74,4 +74,7 @@ HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 GAME_SPEED = 20
 DEFAULT_TYPE = "default"
-HEART_COUNT = 3
+HEART_COUNT = 10
+HAMMER_POWER_UP = 10
+SHIELD_TYPE = "shield"
+HAMMER_TYPE = "hammer"

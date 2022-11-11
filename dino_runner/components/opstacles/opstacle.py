@@ -13,7 +13,7 @@ class Obstacle(Sprite):
     self.step_index = 0
 
   def update(self, game_speed, obstacles, type):
-    self.rect.x -= game_speed + 9
+    self.rect.x -= 15
 
     if self.step_index >= 10:
       self.step_index = 0
@@ -23,7 +23,7 @@ class Obstacle(Sprite):
       self.rect.y = rest_y[(type - 2)] - self.rect.height
       self.run()
 
-    if self.rect.x < -game_speed:
+    if self.rect.x < -game_speed and obstacles:
       obstacles.pop()
     
     
