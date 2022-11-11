@@ -1,5 +1,3 @@
-import pygame
-
 from dino_runner.components.clouds.cloud import Cloud
 from dino_runner.utils.constants import CLOUD
 
@@ -10,7 +8,7 @@ class CloudManager:
     self.clouds_count = 0
   
   def update(self):
-    if self.clouds_count % 50 == 0 and len(self.clouds) < 3:
+    if self.clouds_count % 50 == 0 and len(self.clouds) < 6:
       self.clouds.append(Cloud(CLOUD))
 
     for cloud in self.clouds:

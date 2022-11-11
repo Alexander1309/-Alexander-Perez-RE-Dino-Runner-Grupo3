@@ -2,6 +2,7 @@ import pygame
 
 from dino_runner.components.clouds.cloud_manager import CloudManager
 from dino_runner.components.dinosaur import Dinosaur
+from dino_runner.components.meteors.meteor_manager import MeteorManager
 from dino_runner.components.opstacles.obstacle_manager import ObstacleManager
 from dino_runner.components.player_hearts.player_heart_manager import \
     PlayerHeartManager
@@ -27,6 +28,7 @@ class Game:
     self.obstacle_manager = ObstacleManager()
     self.player_heart_manager = PlayerHeartManager()
     self.cloud_manager = CloudManager()
+    self.meteor_manager = MeteorManager()
     self.power_up_manager = PowerUpManager()
 
     self.poitn_ant = 0
@@ -51,6 +53,7 @@ class Game:
     self.obstacle_manager.reset_obstacles(self)
     self.player_heart_manager.reset_hearts()
     self.cloud_manager.reset_clouds()
+    self.meteor_manager.reset_meteors()
     self.power_up_manager.reset_power_ups(self.points)
 
   def execute(self):
@@ -70,6 +73,7 @@ class Game:
     self.player.update(user_input)
     self.obstacle_manager.update(self)
     self.cloud_manager.update()
+    self.meteor_manager.update()
     self.power_up_manager.update(self.points, self.game_speed, self.player)
     
     if self.points % 250 == 0:
@@ -82,6 +86,7 @@ class Game:
     self.player.draw(self.screen)
     self.obstacle_manager.draw(self.screen)
     self.player_heart_manager.draw(self.screen)
+    self.meteor_manager.draw(self.screen)
     self.cloud_manager.draw(self.screen)
     self.power_up_manager.draw(self.screen)
 

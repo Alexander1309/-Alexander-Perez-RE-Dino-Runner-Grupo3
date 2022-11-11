@@ -64,6 +64,20 @@ BIRD = [
     pygame.image.load(os.path.join(IMG_DIR, "Bird/Bird2.png")),
 ]
 
+SMALL_METEORS = [
+  pygame.image.load(os.path.join(IMG_DIR, "Meteors/MS1.png")),
+  pygame.image.load(os.path.join(IMG_DIR, "Meteors/MS2.png")),
+  pygame.image.load(os.path.join(IMG_DIR, "Meteors/MS3.png")),
+  pygame.image.load(os.path.join(IMG_DIR, "Meteors/MS4.png")),
+]
+
+LARGE_METEORS = [
+  pygame.image.load(os.path.join(IMG_DIR, "Meteors/ML1.png")),
+  pygame.image.load(os.path.join(IMG_DIR, "Meteors/ML2.png")),
+  pygame.image.load(os.path.join(IMG_DIR, "Meteors/ML3.png")),
+  pygame.image.load(os.path.join(IMG_DIR, "Meteors/ML4.png")),
+]
+
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
@@ -74,7 +88,7 @@ HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 GAME_SPEED = 20
 DEFAULT_TYPE = "default"
-HEART_COUNT = 10
+HEART_COUNT = 3
 HAMMER_POWER_UP = 10
 SHIELD_TYPE = "shield"
 HAMMER_TYPE = "hammer"

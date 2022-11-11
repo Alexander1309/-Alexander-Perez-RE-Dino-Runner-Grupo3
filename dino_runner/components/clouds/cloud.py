@@ -16,7 +16,7 @@ class Cloud(Sprite):
   def update(self, self1):
     self.rect.x -= 10
 
-    if self1.clouds_count == 270:
+    if self1.clouds_count == 420:
       self1.reset_clouds()
         
   def draw(self, screen):
