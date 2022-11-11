@@ -26,7 +26,7 @@ class PowerUpManager:
         print("Generate Power Up")
         self.when_appears = random.randint(self.when_appears + 200, self.when_appears + 250)
         random.shuffle(self.option_numbers)
-        if self.option_numbers[0] <= 5:
+        if self.option_numbers[0] <= 20:
           self.power_ups.append(Shield())
         else:
           self.power_ups.append(HammerPowerUp())
