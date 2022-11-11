@@ -24,6 +24,7 @@ class ObstacleManager:
     
     for obstacle in self.obstacles:
       obstacle.update(game.game_speed, self.obstacles, self.select_enemy)
+
       if game.player.hammer is not None and game.player.hammer.rect.colliderect(obstacle.rect):
         game.player.hammer.kill()
         self.obstacles.pop()
@@ -32,7 +33,7 @@ class ObstacleManager:
 
       if game.player.dino_rect.colliderect(obstacle.rect):
         if not game.player.shield:
-          self.obstacles = []
+          game.player.sounds[1].play()
           game.player_heart_manager.reduce_heart()
           if game.player_heart_manager.heart_count > 0:
             game.player.shield = True
@@ -41,7 +42,6 @@ class ObstacleManager:
             game.player.shield_time_up = start_time + 1000
           else:
             pygame.time.delay(500)
-            game.reset()
             game.playing = False
             game.death_count += 1
             break

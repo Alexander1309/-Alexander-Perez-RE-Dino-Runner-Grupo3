@@ -16,6 +16,7 @@ from dino_runner.utils.constants import (BG, FPS, GAME_OVER, GAME_SPEED, ICON,
 class Game:
   def __init__(self):
     pygame.init()
+    pygame.mixer.init()
     pygame.display.set_caption(TITLE)
     pygame.display.set_icon(ICON)
     self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -36,11 +37,6 @@ class Game:
     self.running = True
     self.death_count = 0
 
-  def reset(self):
-    self.poitn_ant = self.points
-    self.points = 0
-    self.game_speed = GAME_SPEED
-
   def run(self):
     self.create_components()
     self.playing = True
@@ -55,6 +51,9 @@ class Game:
     self.cloud_manager.reset_clouds()
     self.meteor_manager.reset_meteors()
     self.power_up_manager.reset_power_ups(self.points)
+    self.poitn_ant = self.points
+    self.points = 0
+    self.game_speed = GAME_SPEED
 
   def execute(self):
     while self.running:
@@ -120,6 +119,7 @@ class Game:
         exit()
 
       if event.type == pygame.KEYDOWN:
+        self.player.setup_state_boolean()
         self.run()
     
   def print_menu_elements(self):
